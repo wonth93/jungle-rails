@@ -22,12 +22,23 @@ main section.categories-show {
       .soldout {
         min-width: 110px;
         background: rgba(224, 14, 14, 0.8);
-        border: 1px solid rgba(224, 14, 14, 0.8);
+        border: 1px rgba(224, 14, 14, 0.8);
         border-radius: 0.25em;
         color: white;
         padding: 0.375rem 0.75rem;
         font-size: 1rem;
         border-radius: 0.25rem;
+        cursor: auto;
+      }
+      .soldbtn {
+        min-width: 110px;
+        padding-left: 1em;
+        padding-right: 1em;
+        background-color: rgba(196, 245, 206, 0.7);
+        border: 1px rgba(118, 171, 129, 0.7);
+        color: white;
+        border-radius: 0.25em;
+        cursor: auto;
       }
 
       a {
@@ -46,6 +57,17 @@ main section.categories-show {
         transition: all 150ms linear;
         background-color: rgba(0, 130, 29, 0.7);
         h1 {
+          color: white;
+        }
+
+        .soldout {
+          border: 1px rgba(224, 14, 14, 0.8);
+          background: rgba(224, 14, 14, 0.8);
+          color: white;
+        }
+        .soldbtn {
+          border: 1px rgba(118, 171, 129, 0.7);
+          background-color: rgba(196, 245, 206, 0.7);
           color: white;
         }
 
