@@ -63,4 +63,43 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe '.authenticate_with_credentials' do
+  
+    it 'is valid' do
+      @user_1 = User.new(email: 'test@mail.com', first_name: 'Ty', last_name: 'Honda', password: 'aaa', password_confirmation: 'aaa')
+      @user_1.save
+      @user = User.authenticate_with_credentials('test@mail.com', 'aaa')
+      expect(@user).to_not be nil
+    end
+
+    it 'not valid if email is not correct' do
+      @user_1 = User.new(email: 'test@mail.com', first_name: 'Ty', last_name: 'Honda', password: 'aaa', password_confirmation: 'aaa')
+      @user_1.save
+      @user = User.authenticate_with_credentials('tesssssst@mail.com', 'aaa')
+      expect(@user).to be nil
+    end
+
+    it 'not valid if password is not correct' do
+      @user_1 = User.new(email: 'test@mail.com', first_name: 'Ty', last_name: 'Honda', password: 'aaa', password_confirmation: 'aaa')
+      @user_1.save
+      @user = User.authenticate_with_credentials('test@mail.com', 'aaaaaaaaaa')
+      expect(@user).to be nil
+    end
+
+    it 'few spaces before and/or after email address should be successful' do
+      @user_1 = User.new(email: 'test@mail.com', first_name: 'Ty', last_name: 'Honda', password: 'aaa', password_confirmation: 'aaa')
+      @user_1.save
+      @user = User.authenticate_with_credentials('  test@mail.com  ', 'aaa')
+      expect(@user).to_not be nil
+    end
+
+    it 'should be successful if email is in wrong case' do
+      @user_1 = User.new(email: 'test@mail.com', first_name: 'Ty', last_name: 'Honda', password: 'aaa', password_confirmation: 'aaa')
+      @user_1.save
+      @user = User.authenticate_with_credentials('TesT@mail.com', 'aaa')
+      expect(@user).to_not be nil
+    end
+
+  end
+
 end
